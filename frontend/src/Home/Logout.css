@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Cedarville+Cursive&family=Edu+NSW+ACT+Foundation:wght@400..700&family=Lato&family=Mochiy+Pop+One&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Mukta:wght@200;300;400;500;600;700;800&family=Stylish&display=swap');
+
+.overlay {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    transition: opacity 0.3s ease; /* Fade-in transition */
+}
+
+.dialog-box {
+    background-color: rgb(252, 251, 250);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 30px 20px 60px rgba(0, 0, 0, 0.2);
+    width: 500px;
+    height: 250px;
+    text-align: center;
+    transition: opacity 0.3s ease; /* Fade-in transition */
+    font-family: "Mukta", sans-serif;
+    font-size: 1.8rem;
+}
+h2{
+    padding: 1rem;
+}
+p{
+    font-size: 1.3rem;
+    padding-bottom: 0.1rem;
+}
+a{
+    text-decoration: none;
+}
+.btns{
+    margin: 0rem 1rem 1rem 1rem;
+    border: none;
+}
+.btn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    font-weight: 600;
+    width: 6rem;
+    height: 1.8rem;
+    border: none;
+    color: aliceblue;
+    background-color: #6c63ff;
+    border-radius: 5px;
+}
+.logout:hover{
+    border-radius: 5px;
+    border: 1px solid black ; 
+    background-color: white;
+    color: black;
+}
+.cancel{
+    background-color: red;
+}
+.cancel:hover{
+    border-radius: 5px;
+    border: 1px solid black ; 
+    background-color: white;
+    color:black;
+}
+
+
+.dialog-box.pageOpen{
+    animation: pageOpenAnimation 0.5s ease forwards;
+  }
+  
+  @keyframes pageOpenAnimation {
+    0% {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+  }

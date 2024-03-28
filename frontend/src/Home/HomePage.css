@@ -1,0 +1,82 @@
+/* HomePage.css */
+
+@import url('https://fonts.googleapis.com/css2?family=Cedarville+Cursive&family=Edu+NSW+ACT+Foundation:wght@400..700&family=Lato&family=Mochiy+Pop+One&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Mukta:wght@200;300;400;500;600;700;800&family=Stylish&display=swap');
+
+/* Header styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Main content styles */
+.main-content {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgb(240 248 250);
+  margin-top: -10px;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  transition:  opacity 0.5s ease; /* Add transition for opacity with easing */
+}
+
+p {
+  padding: 0;
+  margin: 0;
+}
+
+.mainText {
+  width: 90vw;
+  height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.text {
+  width: 35rem;
+  padding: 2rem;
+  font-size: 1.5rem;
+  font-family: "Mukta", sans-serif;
+  font-weight: 800;
+  font-style: normal;
+  color: #393e46;
+}
+
+.headingText {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: flex-start;
+  color: #093637;
+  font-size: 40px;
+  text-align: start;
+}
+
+.plus {
+  width: 180px;
+  height: 180px;
+}
+.pageOpen{
+  animation: pageOpen 0.5s ease forwards; /* Add transition for opacity with easing */
+
+}
+.pageClose{
+  animation: pageClose 0.5s ease forwards; /* Add transition for opacity with easing */
+
+}
+
+@keyframes pageOpen {
+  0% {
+    opacity: 0; /* Start with opacity 0 */
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1; /* End with opacity 1 */
+    transform: scale(1);
+  }
+}
+
