@@ -14,6 +14,7 @@ const HomePage = () => {
         setIsImgClicked(!imageClick);
         setTimeout(() => {
             setIsSubmitted(!isSubmitted);
+            setShockwaveActive(true); // Re-enable shockwave animation after 1500ms
         }, 1500);
     };
 
@@ -28,8 +29,12 @@ const HomePage = () => {
                             <div className='mainText'>
                                 <p className='text'><h1 className='headingText'>Worried about online security?</h1> We get it. Secure your passwords with our industry-leading encryption technology. Upgrade your online safety today.</p>
                                 <div className='plus' onClick={handleClick}>
+
                                     {imageClick ? (
-                                        <img src={PlusImage} alt="Plus Image" height="150" width="180px" />
+                                        <>
+                                            <div className='tap-effect'></div>
+                                            <img src={PlusImage} alt="Plus Image " height="150" width="180px" className='btn_--shockwave is-active' />
+                                        </>
                                     ) : (
                                         <img src={gifImage} alt="Animated GIF" height="160" width="160px" />
                                     )}

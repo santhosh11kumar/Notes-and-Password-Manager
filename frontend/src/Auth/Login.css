@@ -108,14 +108,15 @@ h1 {
   cursor: pointer;
 }
 .signup{
+  margin-top:1rem ;
   position: relative;
   text-align: center;
   font-size: 15px;
 }
-.signUp_icon{
-  font-size: 14px;
-  color: #007bff;
-  text-decoration: underline;
+.signUp_icon > a {
+  font-size: 1rem;
+  color: #286fe0;
+  font-weight: 700;
   cursor: pointer;
 }
 

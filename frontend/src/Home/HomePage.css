@@ -59,14 +59,18 @@ p {
 .plus {
   width: 180px;
   height: 180px;
+  position: relative;
+  cursor: pointer;
 }
-.pageOpen{
+
+
+
+.pageOpen {
   animation: pageOpen 0.5s ease forwards; /* Add transition for opacity with easing */
-
 }
-.pageClose{
-  animation: pageClose 0.5s ease forwards; /* Add transition for opacity with easing */
 
+.pageClose {
+  animation: pageClose 0.5s ease forwards; /* Add transition for opacity with easing */
 }
 
 @keyframes pageOpen {
@@ -79,4 +83,26 @@ p {
     transform: scale(1);
   }
 }
+/* Add tap effect animation */
+.tap-effect {
+  
+  position: absolute;
+  top: 50%;
+  left: 58%;
+  width: 25px;
+  height: 25px;
+  background-color: rgba(29, 29, 29, 0.7); /* Adjust the background color and opacity */
+  border-radius: 50%;
+  animation: tapAnimation 1.5s infinite; /* Apply tap animation */
+}
 
+@keyframes tapAnimation {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+}

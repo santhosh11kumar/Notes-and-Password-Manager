@@ -46,7 +46,7 @@ const HomePage = () => {
                 </div>
             </form>
             <div className="signup">
-                <p>New user? <span className='signUp_icon' onClick={handleSignup}><Link to="/signup">Sign up here</Link></span></p>
+                <span className='signUp_icon' onClick={handleSignup}><Link to="/signup">Create free account</Link></span>
             </div>
         </div>
     );
