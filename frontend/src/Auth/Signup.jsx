@@ -1,5 +1,9 @@
 import React, { useState } from 'react';
-import './Signup.css'; // Import your CSS file for styling
+import axios from 'axios';
+import './Signup.css'; // Import your CSS file for styling'
+import { useNavigate } from 'react-router-dom'; // Import useNavigate hook
+import { toast } from 'react-toastify'; // Import toast from react-toastify
+import 'react-toastify/dist/ReactToastify.css'; // Import the CSS for react-toastify
 
 const Signup = () => {
     const [username, setUsername] = useState('');
@@ -7,11 +11,12 @@ const Signup = () => {
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [phoneNumber, setPhoneNumber] = useState('');
+    const navigate = useNavigate(); // Initialize navigate function
 
-    const handleSignup = () => {
+    const handleSignup = async () => {
         // Validation checks
         if (password !== confirmPassword) {
-            alert("Passwords do not match");
+            toast.error("Passwords do not match"); // Display error message with react-toastify
             return;
         }
 
@@ -20,34 +25,28 @@ const Signup = () => {
             username,
             email,
             password,
-            phoneNumber
+            mobile: phoneNumber
         };
 
-        // Send userData to backend for authentication and storage
-        // Example: Use fetch or axios to send a POST request to your backend API
-        fetch('https://your-backend-api.com/signup', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(userData)
-        })
-            .then(response => {
-                if (response.ok) {
-                    // Redirect to authentication page or login page
-                    // Example: Use react-router-dom history object or Link component to navigate
-                    // history.push('/login');
-                } else {
-                    // Handle error response from backend
-                    console.error('Signup failed:', response.statusText);
-                }
-            })
-            .catch(error => console.error('Error:', error));
+        try {
+            // Send userData to backend for authentication and storage
+            const response = await axios.post('http://localhost:8000/user/register', userData);
+
+            if (response.status === 200) {
+                // Handle successful signup
+                toast.success('Signup successful. Please log in.'); // Display success message with react-toastify
+                navigate('/user/login'); // Redirect to login page
+            }
+        } catch (error) {
+            // Handle error response from backend
+            console.error('Signup failed:', error.message);
+            toast.error('Signup failed. Please try again.'); // Display error message with react-toastify
+        }
     };
 
     return (
         <div className="signup-container">
-            <h1 >Sign Up</h1>
+            <h1>Sign Up</h1>
             <form className="signup-form">
                 <div className="input-group">
                     <label htmlFor="username">Username:</label>

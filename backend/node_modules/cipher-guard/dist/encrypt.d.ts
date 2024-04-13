@@ -1,0 +1,1 @@
+export function encrypt(text: string, key: number, salt: string): string;

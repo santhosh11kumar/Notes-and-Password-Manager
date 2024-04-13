@@ -2,6 +2,8 @@ import { Link } from 'react-router-dom';
 import React, { useState } from 'react';
 import './Logout.css';
 import Header from './Header';
+import axios from 'axios'; // Import axios for making HTTP requests
+import { toast } from 'react-toastify';
 
 const Logout = () => {
     const [animationClass, setAnimationClass] = useState('pageOpen');
@@ -10,9 +12,34 @@ const Logout = () => {
     const handleCancelLogout = () => {
         setShowConfirmation(false);
     };
-    const handleConfirmLogout = () => {
-        console.log('Logout confirmed');
-        // For example, you can redirect the user to the logout page
+
+    const handleConfirmLogout = async () => {
+        try {
+
+            const accessToken = localStorage.getItem('AccessToken'); // Retrieve token from secure storage
+
+            if (!accessToken) {
+                // Handle case where no access token is found
+                toast.error("Authorization required");
+                return;
+            }
+            console.log(accessToken)
+            // Make an API request to logout the user
+            const response = await axios.post('http://localhost:8000/user/logout', {
+                headers: {
+                    Authorization: `Bearer ${accessToken}`
+                }
+            })
+
+            if (response.status === 200) {
+                // Redirect to login page after logout
+                window.location.href = '/user/login';
+                toast.success("Logout successful")
+            }
+        } catch (error) {
+            // Handle error response from the server
+            console.error('Logout failed:', error.message);
+        }
     };
 
     return (
@@ -25,7 +52,7 @@ const Logout = () => {
                     <div className="button-container">
                         {/* Use onClick event handler to handle logout */}
                         <button onClick={handleConfirmLogout} className='btns'>
-                            <Link to='/'><div className='btn logout'>Logout</div></Link> {/* Wrap Link component inside button */}
+                            <div className='btn logout'>Logout</div>
                         </button>
                         <button onClick={handleCancelLogout} className='btns'>
                             <Link to='/Homepage'><div className='btn cancel'>Cancel</div></Link> {/* Wrap Link component inside button */}

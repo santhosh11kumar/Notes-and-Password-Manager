@@ -16,6 +16,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // Define routes
 import userRouter from "./routes/user.routes.js"; // Import userRouter
 
-app.use("/users", userRouter); // Mount userRouter at /users
+app.use("/user", userRouter); // Mount userRouter at /users
+
+import passwordRouter from "./routes/password.route.js";
+app.use("/v2", passwordRouter)
 
 export { app };

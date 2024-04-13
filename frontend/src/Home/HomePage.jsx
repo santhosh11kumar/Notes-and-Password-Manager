@@ -1,20 +1,18 @@
-// HomePage.jsx
 import React, { useState } from 'react';
 import gifImage from '../assets/plus.gif';
 import PlusImage from '../assets/PlusNormal.png';
 import './HomePage.css';
-import AddPassword from './AddPassword';
 import Header from './Header.jsx';
+import { useNavigate } from 'react-router-dom';
 
 const HomePage = () => {
-    const [isSubmitted, setIsSubmitted] = useState(true);
+    const navigate = useNavigate(); // Use useNavigate directly within the component
     const [imageClick, setIsImgClicked] = useState(true);
 
     const handleClick = () => {
         setIsImgClicked(!imageClick);
         setTimeout(() => {
-            setIsSubmitted(!isSubmitted);
-            setShockwaveActive(true); // Re-enable shockwave animation after 1500ms
+            navigate("/v2/AddPassword"); // Use navigate directly here
         }, 1500);
     };
 
@@ -22,27 +20,21 @@ const HomePage = () => {
         <div className='body'>
             <div className={"home-page "}>
                 <Header></Header>
-
-                <main className={`main-content ${isSubmitted ? 'pageOpen' : 'pageClose'}`}>
+                <main className={`main-content ${'pageOpen'}`}>
                     <div>
-                        {isSubmitted ? (
-                            <div className='mainText'>
-                                <p className='text'><h1 className='headingText'>Worried about online security?</h1> We get it. Secure your passwords with our industry-leading encryption technology. Upgrade your online safety today.</p>
-                                <div className='plus' onClick={handleClick}>
-
-                                    {imageClick ? (
-                                        <>
-                                            <div className='tap-effect'></div>
-                                            <img src={PlusImage} alt="Plus Image " height="150" width="180px" className='btn_--shockwave is-active' />
-                                        </>
-                                    ) : (
-                                        <img src={gifImage} alt="Animated GIF" height="160" width="160px" />
-                                    )}
-                                </div>
+                        <div className='mainText'>
+                            <div className='text'><div className='headingText'>Worried about online security?</div> We get it. Secure your passwords with our industry-leading encryption technology. Upgrade your online safety today.</div>
+                            <div className='plus' onClick={handleClick}>
+                                {imageClick ? (
+                                    <>
+                                        <div className='tap-effect'></div>
+                                        <img src={PlusImage} alt="Plus Image " height="150" width="180px" className='btn_--shockwave is-active' />
+                                    </>
+                                ) : (
+                                    <img src={gifImage} alt="Animated GIF" height="160" width="160px" />
+                                )}
                             </div>
-                        ) : (
-                            <AddPassword setIsSubmitted={setIsSubmitted} setIsImgClicked={setIsImgClicked} />
-                        )}
+                        </div>
                     </div>
                 </main>
             </div>

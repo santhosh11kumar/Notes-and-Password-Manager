@@ -1,22 +1,45 @@
 import React, { useState } from 'react';
 import './Login.css';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { toast } from "react-toastify";
+import axios from 'axios';
+
+
 const HomePage = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    const [theme, setTheme] = useState('light');
+    const navigate = useNavigate(); // Move useNavigate here
 
+    const handleLogin = async () => {
+        try {
+            const loginData = {
+                username,
+                password
+            };
 
-    const handleLogin = () => toast.success("Login Successfull");
+            const response = await axios.post('http://localhost:8000/user/login', loginData);
+            if (response.status === 200) {
+                toast.success("Login Successful");
+                const authToken = response.data.data.accessToken;
+                console.log(response, authToken)
+                localStorage.removeItem('AccessToken');
+                localStorage.setItem('AccessToken', authToken);
+                navigate('/Homepage');
+            } else {
+                toast.error("Login Failed");
+            }
+        } catch (error) {
+            toast.error("Login Failed");
+            console.error('Login failed:', error.message);
+        }
+    }
 
     const handleSignup = () => {
-        // Logic for handling signup
-        console.log('Signing up with:', { username, password });
+
     };
 
     return (
-        <div className={`container ${theme}`}>
+        <div className={`container `}>
             <form className="form-container">
                 <h1>Login to continue</h1>
                 <div className="input-group">
@@ -46,7 +69,7 @@ const HomePage = () => {
                 </div>
             </form>
             <div className="signup">
-                <span className='signUp_icon' onClick={handleSignup}><Link to="/signup">Create free account</Link></span>
+                <span className='signUp_icon' onClick={handleSignup}><Link to="/user/register">Create free account</Link></span>
             </div>
         </div>
     );

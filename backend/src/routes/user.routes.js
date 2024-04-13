@@ -13,7 +13,9 @@ const router = Router();
 
 router.post("/register", registerUser); // Define route for user registration
 
-router.route("/login").post(loginUser)
+router.route("/login").post(loginUser);
+
+
 
 //secured routes
 router.route("/logout").post(verifyJWT, logoutUser)
