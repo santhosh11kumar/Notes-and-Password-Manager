@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
+import { Website } from "./website.model.js"
 
 const userSchema = new mongoose.Schema(
     {
@@ -31,6 +32,9 @@ const userSchema = new mongoose.Schema(
         timestamps: true
     }
 );
+
+// Other schema methods...
+
 
 // before loading the password in db hash the password
 userSchema.pre("save", async function (next) {

@@ -41,6 +41,7 @@ h1 {
 }
 
 .input-group {
+  position: relative;
   margin-bottom: 20px;
 }
 
@@ -118,6 +119,12 @@ h1 {
   color: #286fe0;
   font-weight: 700;
   cursor: pointer;
+}
+.show_hide{
+  position: absolute;
+  height: 20px;
+  right: 5px;
+  top: 35px;
 }
 
 

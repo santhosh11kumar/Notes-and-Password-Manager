@@ -3,7 +3,6 @@ import { User } from "../models/user.model.js";
 import { ApiError } from "../utils/apiError.js";
 import { ApiResponse } from "../utils/apiResponse.js";
 import jwt from "jsonwebtoken"
-import { Website } from "../models/website.model.js";
 
 const generateAccessAndRefereshTokens = async (userId) => {
     try {
@@ -35,7 +34,7 @@ const registerUser = asyncHandler(async (req, res) => {
         mobile: mobile
     })
 
-    const result = await Website.deleteMany({});
+    // const result = await Website.deleteMany({});
 
     const createdUser = await User.findById(user._id).select(
         "-password -refreshToken"

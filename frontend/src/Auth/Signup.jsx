@@ -4,6 +4,9 @@ import './Signup.css'; // Import your CSS file for styling'
 import { useNavigate } from 'react-router-dom'; // Import useNavigate hook
 import { toast } from 'react-toastify'; // Import toast from react-toastify
 import 'react-toastify/dist/ReactToastify.css'; // Import the CSS for react-toastify
+import hide from "../assets/hide.png";
+import view from "../assets/view.png";
+
 
 const Signup = () => {
     const [username, setUsername] = useState('');
@@ -11,6 +14,8 @@ const Signup = () => {
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [phoneNumber, setPhoneNumber] = useState('');
+    const [show1, setShow1] = useState(false)
+    const [show2, setShow2] = useState(false)
     const navigate = useNavigate(); // Initialize navigate function
 
     const handleSignup = async () => {
@@ -73,24 +78,38 @@ const Signup = () => {
                 <div className="input-group">
                     <label htmlFor="password">Password:</label>
                     <input
-                        type="password"
+                        type={show1 ? "text" : "password"}
                         id="password"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                         className="text-input"
                         placeholder="Enter your password"
                     />
+                    <div className='show_hide'>
+                        {show1 ? (
+                            <img src={view} onClick={() => setShow1(!show1)} alt="Hide" width={20}></img>
+                        ) : (
+                            <img src={hide} onClick={() => setShow1(!show1)} alt="View" width={20}></img>
+                        )}
+                    </div>
                 </div>
                 <div className="input-group">
                     <label htmlFor="confirmPassword">Confirm Password:</label>
                     <input
-                        type="password"
+                        type={show2 ? "text" : "password"}
                         id="confirmPassword"
                         value={confirmPassword}
                         onChange={(e) => setConfirmPassword(e.target.value)}
                         className="text-input"
                         placeholder="Confirm your password"
                     />
+                    <div className='show_hide'>
+                        {show2 ? (
+                            <img src={view} onClick={() => setShow2(!show2)} alt="Hide" width={20}></img>
+                        ) : (
+                            <img src={hide} onClick={() => setShow2(!show2)} alt="View" width={20}></img>
+                        )}
+                    </div>
                 </div>
                 <div className="input-group">
                     <label htmlFor="phoneNumber">Phone Number:</label>

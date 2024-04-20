@@ -3,6 +3,8 @@ import './Login.css';
 import { Link, useNavigate } from 'react-router-dom';
 import { toast } from "react-toastify";
 import axios from 'axios';
+import hide from "../assets/hide.png";
+import view from "../assets/view.png";
 
 
 const HomePage = () => {
@@ -37,6 +39,7 @@ const HomePage = () => {
     const handleSignup = () => {
 
     };
+    const [show, setShow] = useState(false)
 
     return (
         <div className={`container `}>
@@ -56,22 +59,35 @@ const HomePage = () => {
                 <div className="input-group">
                     <label htmlFor="password">Password:</label>
                     <input
-                        type="password"
+                        type={show ? "text" : "password"}
                         id="password"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
+                        onKeyPress={(e) => {
+                            if (e.key === 'Enter') {
+                                handleLogin();
+                            }
+                        }}
                         className="text-input"
                         placeholder="Enter your password"
                     />
+                    <div className='show_hide'>
+                        {show ? (
+                            <img src={view} onClick={() => setShow(!show)} alt="Hide" width={20}></img>
+                        ) : (
+                            <img src={hide} onClick={() => setShow(!show)} alt="View" width={20}></img>
+                        )}
+                    </div>
+
                 </div>
-                <div className='buttonDiv'>
+                <div className='buttonDiv' >
                     <button type="button" onClick={handleLogin} className="button">Login</button>
                 </div>
-            </form>
+            </form >
             <div className="signup">
                 <span className='signUp_icon' onClick={handleSignup}><Link to="/user/register">Create free account</Link></span>
             </div>
-        </div>
+        </div >
     );
 };
 

@@ -1,7 +1,9 @@
 import mongoose from "mongoose";
 
 const websiteSchema = new mongoose.Schema({
-
+    idx: {
+        type: String,
+    },
     websiteName: {
         type: String,
         required: true,
@@ -16,13 +18,11 @@ const websiteSchema = new mongoose.Schema({
         password: {
             type: String,
             required: true
-        }
+        },
     }],
-
     refreshToken: {
         type: String,
     }
-
 }, {
     timestamps: true
 });

@@ -102,12 +102,9 @@ const PasswordPage = () => {
 
                 try {
                     const logoUrl = `https://logo.uplead.com/${websiteName}.com`;
-
-                    // Use a closure to associate logo URL with the correct website
                     if (logoUrl) {
                         siteLogos[websiteName] = logoUrl;
-                    }
-                    else {
+                    } else {
                         siteLogos[websiteName] = defaultLogo;
                     }
                 } catch (error) {
@@ -153,7 +150,7 @@ const PasswordPage = () => {
                                 <div className="site-info" onClick={() => handleSiteInfoClick(password.websiteName)}>
                                     <div className="site-name">{password.websiteName.charAt(0).toUpperCase() + password.websiteName.slice(1)}</div>
                                     <img
-                                        src={siteLogosData[password.websiteName]} // Use defaultLogo if logo URL doesn't exist
+                                        src={siteLogosData[password.websiteName] || defaultLogo} // Use defaultLogo if logo URL doesn't exist
                                         alt={password.websiteName}
                                         className={`site-logo ${animationClass} `}
                                     />
