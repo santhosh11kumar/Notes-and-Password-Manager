@@ -65,7 +65,7 @@ const PasswordPage = () => {
                     throw new Error("Authorization required");
                 }
 
-                const response = await axios.get('http://localhost:8000/v2/PasswordManager', {
+                const response = await axios.get('https://movie-review-backend-1zbx.onrender.com/v2/PasswordManager', {
                     headers: {
                         Authorization: `Bearer ${accessToken}`
                     }

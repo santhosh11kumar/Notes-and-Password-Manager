@@ -19,7 +19,7 @@ const HomePage = () => {
                 password
             };
 
-            const response = await axios.post('http://localhost:8000/user/login', loginData);
+            const response = await axios.post('https://movie-review-backend-1zbx.onrender.com/user/login', loginData);
             if (response.status === 200) {
                 toast.success("Login Successful");
                 const authToken = response.data.data.accessToken;

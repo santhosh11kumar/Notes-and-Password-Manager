@@ -35,7 +35,7 @@ const Signup = () => {
 
         try {
             // Send userData to backend for authentication and storage
-            const response = await axios.post('http://localhost:8000/user/register', userData);
+            const response = await axios.post('https://movie-review-backend-1zbx.onrender.com/user/register', userData);
 
             if (response.status === 200) {
                 // Handle successful signup

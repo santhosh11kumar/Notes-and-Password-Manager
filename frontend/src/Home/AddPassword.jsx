@@ -24,7 +24,7 @@ const AddPassword = () => {
                 toast.error("Authorization required");
                 return;
             }
-            const PasswordData = await axios.post('http://localhost:8000/v2/AddPassword', {
+            const PasswordData = await axios.post('https://movie-review-backend-1zbx.onrender.com/v2/AddPassword', {
                 websiteName,
                 userName,
                 password

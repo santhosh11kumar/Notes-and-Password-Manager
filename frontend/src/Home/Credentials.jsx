@@ -22,7 +22,7 @@ const Credentials = ({ websiteName, setToDisplay }) => {
                     throw new Error("Authorization required");
                 }
 
-                const response = await axios.get(`http://localhost:8000/v2/PasswordManager/${websiteName}`, {
+                const response = await axios.get(`https://movie-review-backend-1zbx.onrender.com/v2/PasswordManager/${websiteName}`, {
                     headers: {
                         Authorization: `Bearer ${accessToken}`
                     }
@@ -59,7 +59,7 @@ const Credentials = ({ websiteName, setToDisplay }) => {
                 throw new Error("Authorization required");
             }
 
-            const response = await axios.post('http://localhost:8000/v2/generate-otp', {
+            const response = await axios.post('https://movie-review-backend-1zbx.onrender.com/v2/generate-otp', {
                 headers: {
                     Authorization: `Bearer ${accessToken}`
                 }
@@ -85,7 +85,7 @@ const Credentials = ({ websiteName, setToDisplay }) => {
                 throw new Error("Authorization required");
             }
 
-            const response = await axios.post('http://localhost:8000/v2/verify-otp', {
+            const response = await axios.post('https://movie-review-backend-1zbx.onrender.com/v2/verify-otp', {
                 otp: enteredOTP[username],
                 websiteToFind: websiteName,
                 userName: username,

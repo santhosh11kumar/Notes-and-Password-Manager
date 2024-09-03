@@ -25,7 +25,7 @@ const Logout = () => {
             }
             console.log(accessToken)
             // Make an API request to logout the user
-            const response = await axios.post('http://localhost:8000/user/logout', {
+            const response = await axios.post('https://movie-review-backend-1zbx.onrender.com/user/logout', {
                 headers: {
                     Authorization: `Bearer ${accessToken}`
                 }
