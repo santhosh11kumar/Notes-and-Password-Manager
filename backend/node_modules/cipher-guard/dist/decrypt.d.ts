@@ -1,1 +1,0 @@
-export function decrypt(encryptedText: string, key: number, salt: string): string;
