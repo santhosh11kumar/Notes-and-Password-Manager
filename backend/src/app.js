@@ -6,7 +6,11 @@ import bodyParser from "body-parser"; // Import body-parser
 const app = express();
 
 // Configure middleware
-app.use(cors());
+app.use(cors({
+  origin: 'https://your-frontend-domain.com', // Replace with your frontend domain
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  credentials: true
+}));
 app.use(express.json({ limit: "24kb" }));
 app.use(express.urlencoded({ extended: true, limit: "24kb" }));
 app.use(express.static("public"));
