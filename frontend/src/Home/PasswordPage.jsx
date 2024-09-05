@@ -50,7 +50,7 @@ const PasswordPage = () => {
     const [selectedWebsite, setSelectedWebsite] = useState(null); // State to store selected website
     const [overlay, setToDisplay] = useState(false); // Initialize overlay state to false
     const navigate = useNavigate();
-
+    const path = import.meta.env.URL_PATH;
 
     useEffect(() => {
         const fetchPasswords = async () => {
@@ -65,7 +65,7 @@ const PasswordPage = () => {
                     throw new Error("Authorization required");
                 }
 
-                const response = await axios.get('https://movie-review-backend-1zbx.onrender.com/v2/PasswordManager', {
+                const response = await axios.get(`${path}/v2/PasswordManager`, {
                     headers: {
                         Authorization: `Bearer ${accessToken}`
                     }

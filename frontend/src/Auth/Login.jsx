@@ -11,7 +11,7 @@ const HomePage = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate(); // Move useNavigate here
-
+    const path = import.meta.env.URL_PATH;
     const handleLogin = async () => {
         try {
             const loginData = {
@@ -19,7 +19,7 @@ const HomePage = () => {
                 password
             };
 
-            const response = await axios.post('https://movie-review-backend-1zbx.onrender.com/user/login', loginData);
+            const response = await axios.post(`${path}/user/login`, loginData);
             if (response.status === 200) {
                 toast.success("Login Successful");
                 const authToken = response.data.data.accessToken;

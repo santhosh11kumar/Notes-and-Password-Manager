@@ -12,7 +12,7 @@ const Logout = () => {
     const handleCancelLogout = () => {
         setShowConfirmation(false);
     };
-
+    const path = import.meta.env.URL_PATH;
     const handleConfirmLogout = async () => {
         try {
 
@@ -25,7 +25,7 @@ const Logout = () => {
             }
             console.log(accessToken)
             // Make an API request to logout the user
-            const response = await axios.post('https://movie-review-backend-1zbx.onrender.com/user/logout', {
+            const response = await axios.post(`${path}/user/logout`, {
                 headers: {
                     Authorization: `Bearer ${accessToken}`
                 }

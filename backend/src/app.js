@@ -6,9 +6,7 @@ import bodyParser from "body-parser"; // Import body-parser
 const app = express();
 
 // Configure middleware
-app.use(cors({
-    origin: 'https://notes-and-password-manager.vercel.app' // Replace with your frontend domain
-}));
+app.use(cors());
 app.use(express.json({ limit: "24kb" }));
 app.use(express.urlencoded({ extended: true, limit: "24kb" }));
 app.use(express.static("public"));

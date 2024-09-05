@@ -12,7 +12,7 @@ const AddPassword = () => {
     const [userName, setUserName] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
-
+    const path = import.meta.env.URL_PATH;
     const handleAddPassword = async (e) => {
         e.preventDefault();
 
@@ -24,7 +24,7 @@ const AddPassword = () => {
                 toast.error("Authorization required");
                 return;
             }
-            const PasswordData = await axios.post('https://movie-review-backend-1zbx.onrender.com/v2/AddPassword', {
+            const PasswordData = await axios.post(`${path}/v2/AddPassword`, {
                 websiteName,
                 userName,
                 password

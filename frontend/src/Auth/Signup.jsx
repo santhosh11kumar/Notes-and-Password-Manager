@@ -24,7 +24,7 @@ const Signup = () => {
             toast.error("Passwords do not match"); // Display error message with react-toastify
             return;
         }
-
+        const path = import.meta.env.URL_PATH;
         // Prepare user data object
         const userData = {
             username,
@@ -35,7 +35,7 @@ const Signup = () => {
 
         try {
             // Send userData to backend for authentication and storage
-            const response = await axios.post('https://movie-review-backend-1zbx.onrender.com/user/register', userData);
+            const response = await axios.post(`${path}/user/register`, userData);
 
             if (response.status === 200) {
                 // Handle successful signup

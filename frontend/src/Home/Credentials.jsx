@@ -13,7 +13,7 @@ const Credentials = ({ websiteName, setToDisplay }) => {
     const [enteredOTP, setEnteredOTP] = useState({});
     const [selectedUsername, setSelectedUsername] = useState(null);
     const popupRef = useRef(null);
-
+    const path = import.meta.env.URL_PATH;
     useEffect(() => {
         const fetchCredentials = async () => {
             try {
@@ -22,7 +22,7 @@ const Credentials = ({ websiteName, setToDisplay }) => {
                     throw new Error("Authorization required");
                 }
 
-                const response = await axios.get(`https://movie-review-backend-1zbx.onrender.com/v2/PasswordManager/${websiteName}`, {
+                const response = await axios.get(`${path}/v2/PasswordManager/${websiteName}`, {
                     headers: {
                         Authorization: `Bearer ${accessToken}`
                     }
@@ -53,13 +53,14 @@ const Credentials = ({ websiteName, setToDisplay }) => {
     }, []);
 
     const handleGenerateOTP = async (username) => {
+        const path = import.meta.env.URL_PATH;
         try {
             const accessToken = localStorage.getItem('AccessToken');
             if (!accessToken) {
                 throw new Error("Authorization required");
             }
 
-            const response = await axios.post('https://movie-review-backend-1zbx.onrender.com/v2/generate-otp', {
+            const response = await axios.post(`${path}/v2/generate-otp`, {
                 headers: {
                     Authorization: `Bearer ${accessToken}`
                 }
@@ -79,13 +80,14 @@ const Credentials = ({ websiteName, setToDisplay }) => {
     };
 
     const handleSendOTP = async (username) => {
+        const path = import.meta.env.URL_PATH;
         try {
             const accessToken = localStorage.getItem('AccessToken');
             if (!accessToken) {
                 throw new Error("Authorization required");
             }
 
-            const response = await axios.post('https://movie-review-backend-1zbx.onrender.com/v2/verify-otp', {
+            const response = await axios.post(`${path}/v2/verify-otp`, {
                 otp: enteredOTP[username],
                 websiteToFind: websiteName,
                 userName: username,
