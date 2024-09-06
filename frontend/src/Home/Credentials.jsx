@@ -53,7 +53,7 @@ const Credentials = ({ websiteName, setToDisplay }) => {
     }, []);
 
     const handleGenerateOTP = async (username) => {
-        const path = import.meta.env.URL_PATH;
+        const path = import.meta.env.VITE_URL_PATH;
         try {
             const accessToken = localStorage.getItem('AccessToken');
             if (!accessToken) {
@@ -80,7 +80,7 @@ const Credentials = ({ websiteName, setToDisplay }) => {
     };
 
     const handleSendOTP = async (username) => {
-        const path = import.meta.env.URL_PATH;
+        const path = import.meta.env.VITE_URL_PATH;
         try {
             const accessToken = localStorage.getItem('AccessToken');
             if (!accessToken) {
