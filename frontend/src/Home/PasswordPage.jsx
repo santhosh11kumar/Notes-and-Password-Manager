@@ -50,7 +50,7 @@ const PasswordPage = () => {
     const [selectedWebsite, setSelectedWebsite] = useState(null); // State to store selected website
     const [overlay, setToDisplay] = useState(false); // Initialize overlay state to false
     const navigate = useNavigate();
-    const path = import.meta.env.URL_PATH;
+    const path = import.meta.env.VITE_URL_PATH;
 
     useEffect(() => {
         const fetchPasswords = async () => {
