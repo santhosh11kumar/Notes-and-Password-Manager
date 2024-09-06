@@ -5,25 +5,13 @@ import bodyParser from "body-parser"; // Import body-parser
 
 const app = express();
 // Define allowed origins
-const allowedOrigins = [
-  'https://notes-and-password-manager.vercel.app',
-  'https://notes-and-password-manager-9i7j.onrender.com'
-];
+res.setHeader("Access-Control-Allow-Origin", "*");
+res.setHeader("Access-Control-Allow-Credentials", "true");
+res.setHeader("Access-Control-Max-Age", "1800");
+res.setHeader("Access-Control-Allow-Headers", "content-type");
+res.setHeader("Access-Control-Allow-Methods","PUT, POST, GET, DELETE, PATCH, OPTIONS");
 
-// Create CORS options with dynamic origin checking
-const corsOptions = {
-  origin: function (origin, callback) {
-    if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
-  },
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  credentials: true
-};
 
-app.use(cors(corsOptions));
 app.use(express.json({ limit: "24kb" }));
 app.use(express.urlencoded({ extended: true, limit: "24kb" }));
 app.use(express.static("public"));
