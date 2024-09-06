@@ -13,7 +13,7 @@ const Credentials = ({ websiteName, setToDisplay }) => {
     const [enteredOTP, setEnteredOTP] = useState({});
     const [selectedUsername, setSelectedUsername] = useState(null);
     const popupRef = useRef(null);
-    const path = import.meta.env.URL_PATH;
+    const path = import.meta.env.VITE_URL_PATH;
     useEffect(() => {
         const fetchCredentials = async () => {
             try {
