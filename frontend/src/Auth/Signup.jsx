@@ -24,7 +24,7 @@ const Signup = () => {
             toast.error("Passwords do not match"); // Display error message with react-toastify
             return;
         }
-        const path = import.meta.env.URL_PATH;
+        const path = import.meta.env.VITE_URL_PATH;
         // Prepare user data object
         const userData = {
             username,
