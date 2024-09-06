@@ -12,7 +12,7 @@ const AddPassword = () => {
     const [userName, setUserName] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
-    const path = import.meta.env.URL_PATH;
+    const path = import.meta.env.VITE_URL_PATH;
     const handleAddPassword = async (e) => {
         e.preventDefault();
 
