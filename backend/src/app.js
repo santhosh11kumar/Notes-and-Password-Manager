@@ -7,7 +7,7 @@ const app = express();
 
 // Configure middleware
 app.use(cors({
-  origin: 'https://your-frontend-domain.com', // Replace with your frontend domain
+  origin: 'https://notes-and-password-manager-9i7j.onrender.com', // Replace with your frontend domain
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   credentials: true
 }));
