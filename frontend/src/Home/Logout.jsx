@@ -12,7 +12,7 @@ const Logout = () => {
     const handleCancelLogout = () => {
         setShowConfirmation(false);
     };
-    const path = import.meta.env.URL_PATH;
+    const path = import.meta.env.VITE_URL_PATH;
     const handleConfirmLogout = async () => {
         try {
 
